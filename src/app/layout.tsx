@@ -19,6 +19,9 @@ const outfit = Outfit({
 export const metadata: Metadata = {
   title: "Ai Dynamic Advisory | AI Business Consulting South Africa",
   description: "Empowering South African businesses with cutting-edge AI solutions. Strategic consulting, automation, and digital transformation.",
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({
