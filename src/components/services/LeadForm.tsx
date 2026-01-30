@@ -63,9 +63,10 @@ export default function LeadForm({ serviceName, challenges }: LeadFormProps) {
                                     </div>
                                     <select
                                         required
+                                        defaultValue=""
                                         className="bg-white border border-accent/10 rounded-xl px-6 py-4 focus:ring-2 focus:ring-primary/20 outline-none appearance-none"
                                     >
-                                        <option value="" disabled selected>Select Your Biggest Challenge</option>
+                                        <option value="" disabled>Select Your Biggest Challenge</option>
                                         {challenges.map((c, i) => (
                                             <option key={i} value={c}>{c}</option>
                                         ))}
