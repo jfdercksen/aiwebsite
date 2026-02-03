@@ -57,40 +57,26 @@ export default function Home() {
               </p>
             </motion.div>
 
-            {/* Center Visual */}
+            {/* Visual Column - Unified */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
+              initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1 }}
-              className="lg:col-span-1 flex justify-center relative"
+              transition={{ duration: 1.2 }}
+              className="lg:col-span-2 relative flex flex-col lg:flex-row items-center justify-center gap-12"
             >
-              <div className="relative w-full aspect-square max-w-[500px]">
-                <div className="absolute inset-0 bg-primary/20 rounded-full blur-[100px] animate-pulse-slow" />
+              <div className="relative w-full aspect-[16/9] max-w-[900px]">
+                <div className="absolute inset-0 bg-primary/10 rounded-full blur-[120px] animate-pulse-slow" />
                 <Image
-                  src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=2000&auto=format&fit=crop"
-                  alt="AI Intelligence Visual"
+                  src="/images/hero-robot.png"
+                  alt="AI Strategy Visual"
                   fill
-                  className="object-contain relative z-10 brightness-110 contrast-125"
+                  className="object-contain relative z-10"
+                  priority
                 />
               </div>
-            </motion.div>
 
-            {/* Right Side Cards */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              className="lg:col-span-1 space-y-8 flex flex-col items-center lg:items-end"
-            >
-              {/* Video Play Button */}
-              <div className="w-20 h-20 rounded-full border border-white/20 flex items-center justify-center group cursor-pointer hover:border-primary/50 transition-colors">
-                <div className="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-primary/10 transition-colors">
-                  <Play className="w-6 h-6 fill-white group-hover:fill-primary text-white group-hover:text-primary transition-all" />
-                </div>
-              </div>
-
-              {/* Stats Card */}
-              <div className="glass p-6 rounded-3xl w-full max-w-[280px]">
+              {/* Stats Card Overlay */}
+              <div className="lg:absolute lg:right-0 lg:bottom-0 z-20 glass p-6 rounded-[32px] w-full max-w-[280px]">
                 <div className="flex items-center gap-2 mb-4">
                   <div className="flex -space-x-2">
                     {[1, 2, 3].map((i) => (
@@ -103,13 +89,13 @@ export default function Home() {
                     <div className="flex gap-1">
                       {[1, 2, 3, 4, 5].map((i) => <Star key={i} className="w-3 h-3 fill-primary text-primary" />)}
                     </div>
-                    <span className="text-[10px] font-bold text-white/40 uppercase tracking-widest">
-                      Trusted by 500+ Users
+                    <span className="text-[10px] font-black text-white/40 uppercase tracking-widest">
+                      Trusted by 500+
                     </span>
                   </div>
                 </div>
-                <div className="text-2xl font-black mb-1">5/5 <span className="text-primary">★</span></div>
-                <div className="text-xs text-white/40">Registered User Trust around 1k Customer Reviews</div>
+                <div className="text-3xl font-black mb-1 text-white">5/5 <span className="text-primary italic">★</span></div>
+                <div className="text-[10px] text-white/40 leading-tight uppercase font-bold tracking-tighter">Registered User Trust and Customer Reviews</div>
               </div>
             </motion.div>
 

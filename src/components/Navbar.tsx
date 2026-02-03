@@ -7,10 +7,10 @@ import { Menu, X, Cpu } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
+    { name: "Home", href: "/" },
     { name: "Services", href: "/services" },
     { name: "About", href: "/about" },
-    { name: "Case Studies", href: "/case-studies" },
-    { name: "Blog", href: "/blog" },
+    { name: "Resources", href: "/blog" },
     { name: "Contact", href: "/contact" },
 ];
 
