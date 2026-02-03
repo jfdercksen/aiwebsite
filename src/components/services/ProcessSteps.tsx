@@ -11,28 +11,28 @@ const steps = [
 
 export default function ProcessSteps() {
     return (
-        <section className="py-24 px-6 bg-accent/5">
+        <section className="py-24 px-6 bg-[#050505]">
             <div className="max-w-7xl mx-auto">
                 <div className="text-center mb-16">
-                    <h2 className="text-3xl md:text-4xl font-black text-accent mb-4">Our Collaborative Process</h2>
-                    <div className="h-1.5 w-24 bg-secondary mx-auto rounded-full" />
+                    <h2 className="text-3xl md:text-5xl font-black text-white mb-6">Our Execution Model</h2>
+                    <p className="text-white/40 mb-12">Precise, transparent, and built for speed.</p>
                 </div>
 
-                <div className="grid md:grid-cols-4 gap-4">
+                <div className="grid md:grid-cols-4 gap-6">
                     {steps.map((step, i) => (
                         <motion.div
                             key={i}
-                            className="relative p-8 pt-12 rounded-[32px] glass border-accent/5 text-center overflow-hidden"
+                            className="relative p-10 pt-16 rounded-[40px] glass border-white/5 text-center overflow-hidden group hover:border-primary/30 transition-all"
                             initial={{ opacity: 0, x: -20 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: i * 0.1 }}
                         >
-                            <span className="absolute top-4 left-6 text-6xl font-black text-primary/10 select-none">
+                            <span className="absolute top-4 left-1/2 -translate-x-1/2 text-8xl font-black text-white/[0.03] select-none group-hover:text-primary/5 transition-colors">
                                 {step.n}
                             </span>
-                            <h3 className="text-xl font-bold text-accent mb-4 relative z-10">{step.title}</h3>
-                            <p className="text-accent/60 text-sm leading-relaxed relative z-10">{step.desc}</p>
+                            <h3 className="text-2xl font-black text-white mb-4 relative z-10">{step.title}</h3>
+                            <p className="text-white/40 text-sm leading-relaxed relative z-10 font-light">{step.desc}</p>
                         </motion.div>
                     ))}
                 </div>

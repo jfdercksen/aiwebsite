@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Bot, Zap, Shield, BarChart3, TrendingUp, Play, Star, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Bot, Zap, Shield, BarChart3, TrendingUp, Play, Star, CheckCircle2, Brain, Quote } from "lucide-react";
 import Button from "@/components/ui/Button";
 import Link from "next/link";
 import Image from "next/image";
@@ -67,10 +67,10 @@ export default function Home() {
               <div className="relative w-full aspect-square max-w-[500px]">
                 <div className="absolute inset-0 bg-primary/20 rounded-full blur-[100px] animate-pulse-slow" />
                 <Image
-                  src="/images/cybernetic-hero.png" // Placeholder or previously generated if existed
+                  src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=2000&auto=format&fit=crop"
                   alt="AI Intelligence Visual"
                   fill
-                  className="object-contain relative z-10"
+                  className="object-contain relative z-10 brightness-110 contrast-125"
                 />
               </div>
             </motion.div>
@@ -135,12 +135,12 @@ export default function Home() {
             {
               title: "Seamless AI Integration Without Workflow Disruption",
               desc: "Our solutions are designed fast beyond the systems thinking, intuitive experiences that remains smart and scalable growth architecture. The world in your Control.",
-              image: "/images/service-icon-1.png"
+              icon: <Brain className="w-12 h-12 text-primary" />
             },
             {
               title: "Data-Driven Intelligence for Strategic Decision Making",
               desc: "Harness the power of AI to unlock hidden patterns in your data and drive measurable ROI through intelligent business operational automation and custom strategy.",
-              image: "/images/service-icon-2.png"
+              icon: <BarChart3 className="w-12 h-12 text-primary" />
             }
           ].map((card, i) => (
             <motion.div
@@ -150,7 +150,7 @@ export default function Home() {
             >
               <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-primary/10 blur-[80px] group-hover:bg-primary/20 transition-all" />
               <div className="w-24 h-24 rounded-3xl bg-surface mb-8 relative flex items-center justify-center overflow-hidden border border-white/5">
-                <Zap className="w-12 h-12 text-primary" />
+                {card.icon}
               </div>
               <h3 className="text-2xl md:text-3xl font-black mb-6 leading-tight max-w-[80%]">
                 {card.title}

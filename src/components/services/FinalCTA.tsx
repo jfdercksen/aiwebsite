@@ -9,24 +9,31 @@ export default function FinalCTA() {
     };
 
     return (
-        <section className="py-24 px-6 text-center bg-white relative">
-            <div className="max-w-4xl mx-auto">
+        <section className="py-32 px-6 text-center bg-black relative overflow-hidden">
+            {/* Background elements */}
+            <div className="absolute inset-0 flex justify-center gap-4 py-20 pointer-events-none opacity-10">
+                {[...Array(8)].map((_, i) => (
+                    <div key={i} className="w-16 h-full bg-gradient-to-t from-primary via-transparent to-transparent rounded-full transform translate-y-1/2" />
+                ))}
+            </div>
+
+            <div className="max-w-4xl mx-auto relative z-10">
                 <motion.h2
-                    className="text-3xl md:text-5xl font-black text-accent mb-8"
+                    className="text-4xl md:text-6xl font-black text-white mb-8 leading-tight tracking-tight"
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
                 >
-                    Ready to see what AI can do for your business?
+                    Ready to see what <span className="text-primary italic">AI</span> can do for your business?
                 </motion.h2>
                 <motion.p
-                    className="text-xl text-accent/60 mb-12"
+                    className="text-xl text-white/40 mb-12 font-light"
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.1 }}
                 >
-                    Let's talk. Join the leading South African enterprises leveraging intelligent automation.
+                    Let's talk. Join the leading South African enterprises leveraging intelligent automation and data-driven growth.
                 </motion.p>
                 <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
@@ -34,7 +41,7 @@ export default function FinalCTA() {
                     viewport={{ once: true }}
                     transition={{ delay: 0.2 }}
                 >
-                    <Button size="lg" onClick={scrollToForm} className="px-12">
+                    <Button variant="primary" size="lg" onClick={scrollToForm} className="rounded-full px-16 py-5 shadow-[0_0_30px_rgba(255,77,0,0.3)]">
                         Book My Free Assessment
                     </Button>
                 </motion.div>
