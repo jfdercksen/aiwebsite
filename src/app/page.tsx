@@ -109,6 +109,11 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Logos Bar - Restored */}
+      <div className="relative z-20 -mt-10">
+        <ResultsBar />
+      </div>
+
       {/* 2. SERVICES OVERVIEW */}
       <section className="py-32 px-6">
         <div className="max-w-7xl mx-auto text-center mb-24">

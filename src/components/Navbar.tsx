@@ -4,13 +4,15 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Cpu } from "lucide-react";
+import Button from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
     { name: "Home", href: "/" },
     { name: "Services", href: "/services" },
     { name: "About", href: "/about" },
-    { name: "Resources", href: "/blog" },
+    { name: "Case Studies", href: "/case-studies" },
+    { name: "Blog", href: "/blog" },
     { name: "Contact", href: "/contact" },
 ];
 
@@ -38,8 +40,8 @@ export default function Navbar() {
                     <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center group-hover:bg-primary/30 transition-colors">
                         <Cpu className="w-6 h-6 text-primary" />
                     </div>
-                    <span className="text-xl font-bold tracking-tight text-white">
-                        Ai Dynamic <span className="text-primary">Advisory</span>
+                    <span className="text-xl font-bold tracking-tight text-white uppercase">
+                        Ai Dynamic <span className="text-primary italic">Advisory</span>
                     </span>
                 </Link>
 
@@ -49,16 +51,15 @@ export default function Navbar() {
                         <Link
                             key={link.name}
                             href={link.href}
-                            className="text-sm font-medium text-white/70 hover:text-primary transition-colors"
+                            className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 hover:text-primary transition-colors"
                         >
                             {link.name}
                         </Link>
                     ))}
-                    <Link
-                        href="/contact"
-                        className="px-5 py-2 rounded-full bg-white text-black font-bold text-sm hover:scale-105 transition-transform"
-                    >
-                        Let's Talk
+                    <Link href="/contact">
+                        <Button variant="primary" size="sm" className="rounded-full px-6 py-2 shadow-[0_5px_15px_rgba(255,77,0,0.2)]">
+                            Let's Talk
+                        </Button>
                     </Link>
                 </div>
 
