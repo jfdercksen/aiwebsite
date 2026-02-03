@@ -24,12 +24,12 @@ const results = [
 
 export default function ResultsBar() {
     return (
-        <section className="py-20 border-y border-accent/5 bg-white relative overflow-hidden">
+        <section className="py-20 border-y border-white/5 bg-black relative overflow-hidden text-white">
             <div className="max-w-7xl mx-auto px-6 mb-16 text-center">
-                <h3 className="text-accent/30 uppercase tracking-[0.2em] font-bold text-sm mb-12">Trusted By Forward-Thinking Businesses</h3>
+                <h3 className="text-white/20 uppercase tracking-[0.2em] font-bold text-xs mb-12">Trusted By Forward-Thinking Businesses</h3>
                 <div className="relative overflow-hidden">
                     <motion.div
-                        className="flex gap-x-16 opacity-50 grayscale hover:grayscale-0 transition-all duration-500 flex-nowrap"
+                        className="flex gap-x-16 opacity-40 grayscale brightness-200 hover:grayscale-0 transition-all duration-500 flex-nowrap"
                         animate={{
                             x: [0, -1500],
                         }}
@@ -47,11 +47,11 @@ export default function ResultsBar() {
                                             src={client.image}
                                             alt={client.name}
                                             fill
-                                            className={`object-contain ${client.invert ? 'brightness-0' : ''}`}
+                                            className={`object-contain ${client.invert ? 'brightness-100' : 'brightness-0 invert'}`}
                                         />
                                     </div>
                                 ) : (
-                                    <span className="text-lg font-black text-accent uppercase tracking-tighter">{client.name}</span>
+                                    <span className="text-lg font-black text-white uppercase tracking-tighter">{client.name}</span>
                                 )}
                             </div>
                         ))}
@@ -59,7 +59,7 @@ export default function ResultsBar() {
                 </div>
             </div>
 
-            <div className="bg-accent/5 py-12">
+            <div className="bg-surface py-12 border-y border-white/5">
                 <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
                     {results.map((stat, i) => (
                         <div key={i} className="text-center">
@@ -71,7 +71,7 @@ export default function ResultsBar() {
                             >
                                 {stat.value}
                             </motion.div>
-                            <div className="text-xs uppercase tracking-widest text-accent/50 font-bold">{stat.label}</div>
+                            <div className="text-xs uppercase tracking-widest text-white/40 font-bold">{stat.label}</div>
                         </div>
                     ))}
                 </div>

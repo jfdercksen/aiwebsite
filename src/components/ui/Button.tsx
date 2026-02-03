@@ -18,10 +18,10 @@ export default function Button({
     ...props
 }: ButtonProps) {
     const variants = {
-        primary: "bg-accent text-white font-bold hover:shadow-[0_8px_20px_-4px_rgba(15,23,42,0.3)]",
-        secondary: "bg-secondary text-white font-bold",
-        outline: "border-2 border-accent text-accent hover:bg-accent/5",
-        ghost: "text-foreground hover:bg-accent/5",
+        primary: "bg-primary text-black font-bold hover:shadow-[0_0_20px_rgba(255,77,0,0.5)]",
+        secondary: "bg-white text-black font-bold",
+        outline: "border-2 border-primary text-primary hover:bg-primary/10",
+        ghost: "text-white hover:bg-white/10",
     };
 
     const sizes = {

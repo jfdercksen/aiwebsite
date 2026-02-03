@@ -38,8 +38,8 @@ export default function Navbar() {
                     <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center group-hover:bg-primary/30 transition-colors">
                         <Cpu className="w-6 h-6 text-primary" />
                     </div>
-                    <span className="text-xl font-bold tracking-tight text-accent">
-                        Ai Dynamic <span className="text-primary italic">Advisory</span>
+                    <span className="text-xl font-bold tracking-tight text-white">
+                        Ai Dynamic <span className="text-primary">Advisory</span>
                     </span>
                 </Link>
 
@@ -49,22 +49,22 @@ export default function Navbar() {
                         <Link
                             key={link.name}
                             href={link.href}
-                            className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
+                            className="text-sm font-medium text-white/70 hover:text-primary transition-colors"
                         >
                             {link.name}
                         </Link>
                     ))}
                     <Link
                         href="/contact"
-                        className="px-5 py-2 rounded-full bg-primary text-dark font-bold text-sm hover:scale-105 transition-transform"
+                        className="px-5 py-2 rounded-full bg-white text-black font-bold text-sm hover:scale-105 transition-transform"
                     >
-                        Get Started
+                        Let's Talk
                     </Link>
                 </div>
 
                 {/* Mobile Toggle */}
                 <button
-                    className="md:hidden text-foreground"
+                    className="md:hidden text-white"
                     onClick={() => setIsOpen(!isOpen)}
                 >
                     {isOpen ? <X size={28} /> : <Menu size={28} />}
@@ -78,14 +78,14 @@ export default function Navbar() {
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
-                        className="absolute top-full left-0 right-0 bg-white/95 backdrop-blur-xl border-t border-accent/5 p-8 md:hidden shadow-2xl"
+                        className="absolute top-full left-0 right-0 bg-surface/95 backdrop-blur-xl border-t border-white/5 p-8 md:hidden shadow-2xl"
                     >
                         <div className="flex flex-col gap-4">
                             {navLinks.map((link) => (
                                 <Link
                                     key={link.name}
                                     href={link.href}
-                                    className="text-lg font-medium py-2 border-b border-white/5"
+                                    className="text-lg font-medium py-2 border-b border-white/5 text-white"
                                     onClick={() => setIsOpen(false)}
                                 >
                                     {link.name}
@@ -93,10 +93,10 @@ export default function Navbar() {
                             ))}
                             <Link
                                 href="/contact"
-                                className="mt-4 px-6 py-3 rounded-xl bg-accent text-white font-bold text-center"
+                                className="mt-4 px-6 py-3 rounded-xl bg-white text-black font-bold text-center"
                                 onClick={() => setIsOpen(false)}
                             >
-                                Get Started
+                                Let's Talk
                             </Link>
                         </div>
                     </motion.div>
