@@ -52,27 +52,29 @@ export default function Home() {
                 <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center">
                   <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
                 </div>
-                <span className="text-xs font-bold tracking-widest uppercase text-white/60">
-                  innovate with intelligence
+                <span className="text-xs font-black tracking-[0.3em] uppercase text-white/60">
+                  AI Dynamic Advisory • South Africa
                 </span>
               </div>
               <h1 className="text-6xl md:text-9xl font-black mb-10 leading-[0.85] tracking-tighter">
-                Cutting Edge <br />
-                <span className="text-primary italic">AI Solutions</span>
+                Future-Proof with <br />
+                <span className="text-primary italic">AI Strategy</span>
               </h1>
 
               <div className="flex flex-col sm:flex-row gap-6 mb-16">
                 <Button variant="primary" size="lg" className="rounded-full px-12 py-5 shadow-[0_0_30px_rgba(255,77,0,0.3)]" onClick={scrollToForm}>
-                  Free Consultation
+                  AI Readiness Assessment
                 </Button>
-                <Button variant="outline" size="lg" className="rounded-full px-12 py-5 border-white/10 hover:bg-white/5">
-                  Learn More
-                </Button>
+                <Link href="/services">
+                  <Button variant="outline" size="lg" className="rounded-full px-12 py-5 border-white/10 hover:bg-white/5">
+                    Execute Vision
+                  </Button>
+                </Link>
               </div>
 
               <p className="text-xl text-white/40 leading-relaxed max-w-lg font-light">
-                Transforming businesses through next-gen AI strategies and custom solutions.
-                Empowering growth, fueling innovation with scalable, data-driven intelligence.
+                We move beyond generic automation. Our bespoke AI consulting transforms operational silos into intelligent systems,
+                driving measurable growth for modern enterprises.
               </p>
             </motion.div>
 
