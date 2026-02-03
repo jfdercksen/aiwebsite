@@ -25,16 +25,28 @@ export default function Home() {
   return (
     <div className="relative min-h-screen bg-black text-white">
       {/* 1. HERO SECTION */}
-      <section className="relative min-h-screen flex items-center px-6 pt-32 pb-20 overflow-hidden bg-gradient-hero">
-        <div className="max-w-7xl mx-auto w-full relative z-10">
-          <div className="grid lg:grid-cols-3 gap-12 items-center">
+      <section className="relative min-h-screen flex items-center px-6 pt-32 pb-20 overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/hero-robot.png"
+            alt="AI Hero Background"
+            fill
+            className="object-cover brightness-[0.4]"
+            priority
+          />
+          {/* Gradients to blend with sections */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-transparent opacity-80" />
+        </div>
 
-            {/* Left Content */}
+        <div className="max-w-7xl mx-auto w-full relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Content Side */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              className="lg:col-span-1"
             >
               <div className="flex items-center gap-2 mb-6">
                 <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center">
@@ -44,61 +56,55 @@ export default function Home() {
                   innovate with intelligence
                 </span>
               </div>
-              <h1 className="text-6xl md:text-8xl font-black mb-8 leading-[0.9] tracking-tight">
+              <h1 className="text-6xl md:text-9xl font-black mb-10 leading-[0.85] tracking-tighter">
                 Cutting Edge <br />
-                <span className="text-white">AI Solutions</span>
+                <span className="text-primary italic">AI Solutions</span>
               </h1>
-              <Button variant="secondary" size="lg" className="rounded-full px-10 py-5" onClick={scrollToForm}>
-                Free Consultation
-              </Button>
-              <p className="mt-12 text-lg text-white/40 leading-relaxed max-w-sm">
+
+              <div className="flex flex-col sm:flex-row gap-6 mb-16">
+                <Button variant="primary" size="lg" className="rounded-full px-12 py-5 shadow-[0_0_30px_rgba(255,77,0,0.3)]" onClick={scrollToForm}>
+                  Free Consultation
+                </Button>
+                <Button variant="outline" size="lg" className="rounded-full px-12 py-5 border-white/10 hover:bg-white/5">
+                  Learn More
+                </Button>
+              </div>
+
+              <p className="text-xl text-white/40 leading-relaxed max-w-lg font-light">
                 Transforming businesses through next-gen AI strategies and custom solutions.
                 Empowering growth, fueling innovation with scalable, data-driven intelligence.
               </p>
             </motion.div>
 
-            {/* Visual Column - Unified */}
+            {/* Float Stats at the end */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
+              initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1.2 }}
-              className="lg:col-span-2 relative flex flex-col lg:flex-row items-center justify-center gap-12"
+              transition={{ delay: 0.4, duration: 1 }}
+              className="flex justify-center lg:justify-end"
             >
-              <div className="relative w-full aspect-[16/9] max-w-[900px]">
-                <div className="absolute inset-0 bg-primary/10 rounded-full blur-[120px] animate-pulse-slow" />
-                <Image
-                  src="/images/hero-robot.png"
-                  alt="AI Strategy Visual"
-                  fill
-                  className="object-contain relative z-10"
-                  priority
-                />
-              </div>
-
-              {/* Stats Card Overlay */}
-              <div className="lg:absolute lg:right-0 lg:bottom-0 z-20 glass p-6 rounded-[32px] w-full max-w-[280px]">
-                <div className="flex items-center gap-2 mb-4">
-                  <div className="flex -space-x-2">
+              <div className="glass p-8 rounded-[40px] w-full max-w-[320px] border-white/10 shadow-2xl">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="flex -space-x-3">
                     {[1, 2, 3].map((i) => (
-                      <div key={i} className="w-8 h-8 rounded-full border-2 border-black bg-surface relative overflow-hidden">
+                      <div key={i} className="w-10 h-10 rounded-full border-2 border-black bg-surface relative overflow-hidden">
                         <div className="w-full h-full bg-gradient-to-br from-white/20 to-transparent" />
                       </div>
                     ))}
                   </div>
-                  <div className="ml-2">
-                    <div className="flex gap-1">
-                      {[1, 2, 3, 4, 5].map((i) => <Star key={i} className="w-3 h-3 fill-primary text-primary" />)}
+                  <div>
+                    <div className="flex gap-1 mb-1">
+                      {[1, 2, 3, 4, 5].map((i) => <Star key={i} className="w-4 h-4 fill-primary text-primary" />)}
                     </div>
                     <span className="text-[10px] font-black text-white/40 uppercase tracking-widest">
-                      Trusted by 500+
+                      Trusted by 500+ Local Businesses
                     </span>
                   </div>
                 </div>
-                <div className="text-3xl font-black mb-1 text-white">5/5 <span className="text-primary italic">★</span></div>
-                <div className="text-[10px] text-white/40 leading-tight uppercase font-bold tracking-tighter">Registered User Trust and Customer Reviews</div>
+                <div className="text-4xl font-black mb-2 text-white">5.0 <span className="text-primary italic">★</span></div>
+                <div className="text-[11px] text-white/40 leading-tight uppercase font-bold tracking-tight">Verified Performance and Customer Excellence</div>
               </div>
             </motion.div>
-
           </div>
         </div>
       </section>
