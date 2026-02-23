@@ -6,15 +6,56 @@ import Button from "@/components/ui/Button";
 
 interface LeadFormProps {
     serviceName: string;
-    challenges: string[];
+    challenges?: string[];
+    title?: string;
+    description?: string;
+    showServiceSelect?: boolean;
 }
 
-export default function LeadForm({ serviceName, challenges }: LeadFormProps) {
+export default function LeadForm({
+    serviceName,
+    challenges = [],
+    title = "Book My Free Consultation",
+    description = "Tell us about your business and let's explore your AI potential.",
+    showServiceSelect = true
+}: LeadFormProps) {
     const [submitted, setSubmitted] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState<string | null>(null);
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        setSubmitted(true);
+        setLoading(true);
+        setError(null);
+
+        const formData = new FormData(e.currentTarget);
+        const data = Object.fromEntries(formData.entries());
+
+        // Add metadata
+        data.serviceName = serviceName;
+        data.submittedAt = new Date().toISOString();
+        data.sourceUrl = typeof window !== 'undefined' ? window.location.href : '';
+
+        try {
+            const response = await fetch("https://n8n.aiautomata.co.za/webhook/aiwebform", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
+            });
+
+            if (!response.ok) {
+                throw new Error("Failed to submit form");
+            }
+
+            setSubmitted(true);
+        } catch (err) {
+            console.error("Submission error:", err);
+            setError("Something went wrong. Please try again or email us directly.");
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
@@ -27,19 +68,21 @@ export default function LeadForm({ serviceName, challenges }: LeadFormProps) {
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                     >
-                        <h2 className="text-3xl font-black text-white mb-2 text-center">Book My Free Consultation</h2>
-                        <p className="text-white/40 mb-10 text-center">Tell us about your business and let's explore your AI potential.</p>
+                        <h2 className="text-3xl font-black text-white mb-2 text-center">{title}</h2>
+                        <p className="text-white/40 mb-10 text-center">{description}</p>
 
                         <form className="grid gap-6" onSubmit={handleSubmit}>
                             <div className="grid md:grid-cols-2 gap-6">
                                 <input
                                     type="text"
+                                    name="fullName"
                                     placeholder="Full Name"
                                     required
                                     className="bg-black border border-white/10 rounded-xl px-6 py-4 focus:ring-2 focus:ring-primary/20 outline-none text-white placeholder:text-white/20"
                                 />
                                 <input
                                     type="email"
+                                    name="email"
                                     placeholder="Email Address"
                                     required
                                     className="bg-black border border-white/10 rounded-xl px-6 py-4 focus:ring-2 focus:ring-primary/20 outline-none text-white placeholder:text-white/20"
@@ -48,30 +91,61 @@ export default function LeadForm({ serviceName, challenges }: LeadFormProps) {
                             <div className="grid md:grid-cols-2 gap-6">
                                 <input
                                     type="tel"
+                                    name="phone"
                                     placeholder="Phone Number"
                                     required
                                     className="bg-black border border-white/10 rounded-xl px-6 py-4 focus:ring-2 focus:ring-primary/20 outline-none text-white placeholder:text-white/20"
                                 />
                                 <input
                                     type="text"
+                                    name="company"
                                     placeholder="Company Name"
                                     required
                                     className="bg-black border border-white/10 rounded-xl px-6 py-4 focus:ring-2 focus:ring-primary/20 outline-none text-white placeholder:text-white/20"
                                 />
                             </div>
-                            <select
-                                required
-                                defaultValue=""
-                                className="bg-black border border-white/10 rounded-xl px-6 py-4 focus:ring-2 focus:ring-primary/20 outline-none appearance-none text-white invalid:text-white/20"
-                            >
-                                <option value="" disabled>Select Your Biggest Challenge</option>
-                                {challenges.map((c, i) => (
-                                    <option key={i} value={c} className="text-white bg-black">{c}</option>
-                                ))}
-                            </select>
 
-                            <Button type="submit" size="lg" className="w-full mt-4 rounded-full">
-                                Book My Free Consultation
+                            {showServiceSelect && challenges.length > 0 && (
+                                <div className="relative">
+                                    <select
+                                        name="challenge"
+                                        required
+                                        defaultValue=""
+                                        className="w-full bg-black border border-white/10 rounded-xl px-6 py-4 focus:ring-2 focus:ring-primary/20 outline-none appearance-none text-white invalid:text-white/20"
+                                    >
+                                        <option value="" disabled>Select Your Biggest Challenge</option>
+                                        {challenges.map((c, i) => (
+                                            <option key={i} value={c} className="text-white bg-black">{c}</option>
+                                        ))}
+                                    </select>
+                                    <div className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none text-white/20">
+                                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            )}
+
+                            {!showServiceSelect && (
+                                <textarea
+                                    name="message"
+                                    placeholder="Tell us about your project..."
+                                    rows={4}
+                                    className="bg-black border border-white/10 rounded-xl px-6 py-4 focus:ring-2 focus:ring-primary/20 outline-none text-white placeholder:text-white/20 resize-none"
+                                />
+                            )}
+
+                            {error && (
+                                <p className="text-red-500 text-sm text-center">{error}</p>
+                            )}
+
+                            <Button
+                                type="submit"
+                                size="lg"
+                                className="w-full mt-4 rounded-full"
+                                disabled={loading}
+                            >
+                                {loading ? "Sending..." : title}
                             </Button>
                         </form>
                     </motion.div>

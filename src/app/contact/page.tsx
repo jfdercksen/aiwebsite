@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Send } from "lucide-react";
-import Button from "@/components/ui/Button";
+import { Mail, Phone, MapPin } from "lucide-react";
+import LeadForm from "@/components/services/LeadForm";
 
 export default function ContactPage() {
     return (
@@ -51,49 +51,17 @@ export default function ContactPage() {
                     <motion.div
                         initial={{ opacity: 0, x: 30 }}
                         animate={{ opacity: 1, x: 0 }}
-                        className="p-10 md:p-16 rounded-[40px] glass border-white/5 relative overflow-hidden"
+                        className="p-10 md:p-16 rounded-[40px] glass border-white/5 relative overflow-hidden h-fit"
                     >
                         <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 blur-[100px] pointer-events-none" />
-                        <form className="space-y-8 relative z-10" onSubmit={(e) => e.preventDefault()}>
-                            <div className="grid md:grid-cols-2 gap-8">
-                                <div className="space-y-3">
-                                    <label className="text-xs font-black text-white/30 uppercase tracking-widest ml-1">Full Name</label>
-                                    <input
-                                        type="text"
-                                        placeholder="John Doe"
-                                        className="w-full bg-black/50 border border-white/10 rounded-2xl px-6 py-5 focus:outline-none focus:border-primary/50 transition-all text-white placeholder:text-white/10"
-                                    />
-                                </div>
-                                <div className="space-y-3">
-                                    <label className="text-xs font-black text-white/30 uppercase tracking-widest ml-1">Email Address</label>
-                                    <input
-                                        type="email"
-                                        placeholder="john@company.co.za"
-                                        className="w-full bg-black/50 border border-white/10 rounded-2xl px-6 py-5 focus:outline-none focus:border-primary/50 transition-all text-white placeholder:text-white/10"
-                                    />
-                                </div>
-                            </div>
-                            <div className="space-y-3">
-                                <label className="text-xs font-black text-white/30 uppercase tracking-widest ml-1">Service</label>
-                                <select className="w-full bg-black/50 border border-white/10 rounded-2xl px-6 py-5 focus:outline-none focus:border-primary/50 transition-all text-white appearance-none">
-                                    <option className="bg-black">AI Strategy Consulting</option>
-                                    <option className="bg-black">Process Automation</option>
-                                    <option className="bg-black">Conversational AI</option>
-                                    <option className="bg-black">Data Intelligence</option>
-                                </select>
-                            </div>
-                            <div className="space-y-3">
-                                <label className="text-xs font-black text-white/30 uppercase tracking-widest ml-1">Message</label>
-                                <textarea
-                                    rows={4}
-                                    placeholder="Tell us about your project..."
-                                    className="w-full bg-black/50 border border-white/10 rounded-2xl px-6 py-5 focus:outline-none focus:border-primary/50 transition-all text-white placeholder:text-white/10 resize-none"
-                                />
-                            </div>
-                            <Button variant="primary" size="lg" className="w-full py-6 rounded-full shadow-[0_10px_30px_rgba(255,77,0,0.2)]">
-                                Send Message <Send className="w-5 h-5 ml-2" />
-                            </Button>
-                        </form>
+                        <div className="relative z-10">
+                            <LeadForm
+                                serviceName="General Inquiry (Contact Page)"
+                                title="Send a Message"
+                                description="Tell us about your project and we'll get back to you shortly."
+                                showServiceSelect={false}
+                            />
+                        </div>
                     </motion.div>
                 </div>
             </div>
