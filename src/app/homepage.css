@@ -1409,11 +1409,18 @@ footer.custom-footer {
 
     .services-grid,
     .why-layout,
-    .process-steps,
     .hero-stats {
         grid-template-columns: 1fr;
         margin-left: 24px;
         margin-right: 24px;
+    }
+
+    .process-steps {
+        grid-template-columns: 1fr;
+        margin-left: 5px;
+        margin-right: 5px;
+        padding-left: 0;
+        padding-right: 0;
     }
 
     .why-layout {
@@ -1468,7 +1475,7 @@ footer.custom-footer {
     .va-feature-text,
     .va-desc,
     .cta-sub {
-        font-size: 1.15rem !important;
+        font-size: 1.25rem !important;
         line-height: 1.6;
     }
 
@@ -1476,7 +1483,7 @@ footer.custom-footer {
     .why-point-title,
     .process-step-title,
     .va-feature-title {
-        font-size: 1.8rem !important;
+        font-size: 2.2rem !important;
     }
 }
 
