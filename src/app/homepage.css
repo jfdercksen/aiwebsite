@@ -1461,6 +1461,23 @@ footer.custom-footer {
         flex-direction: column;
         align-items: center;
     }
+
+    .service-desc,
+    .why-point-text,
+    .process-step-text,
+    .va-feature-text,
+    .va-desc,
+    .cta-sub {
+        font-size: 1.15rem !important;
+        line-height: 1.6;
+    }
+
+    .service-name,
+    .why-point-title,
+    .process-step-title,
+    .va-feature-title {
+        font-size: 1.8rem !important;
+    }
 }
 
 /* ── LEAD FORM ── */
