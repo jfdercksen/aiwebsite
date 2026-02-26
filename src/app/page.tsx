@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef } from "react";
 import "./homepage.css";
+import LeadForm from "@/components/LeadForm";
 
 export default function HomePage() {
   const cursorRef = useRef<HTMLDivElement>(null);
@@ -698,11 +699,16 @@ export default function HomePage() {
           Intelligent.
         </h2>
         <p className="cta-sub reveal">Book a free 30-minute discovery call. We'll map out where AI can save you time, money, and effort — immediately.</p>
+
+        <div className="reveal">
+          <LeadForm />
+        </div>
+
         <div className="cta-buttons reveal">
-          <a href="mailto:info@aiautomata.co.za" className="btn-large">
+          <a href="mailto:johan@aiautomations.co.za" className="btn-large">
             Book a Free Call
           </a>
-          <a href="tel:+27000000000" className="btn-outline-large">
+          <a href="tel:0878083454" className="btn-outline-large">
             Call Us Directly
           </a>
         </div>
